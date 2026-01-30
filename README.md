@@ -81,24 +81,24 @@ $ export PATH=$PATH:/opt/site-packages/local/bin
 
 #### 运行
 
-使用 `Gradio API` 交互式对话:
+使用 `Gradio API` 交互式翻译:
 
 ```bash
 # 注意路径
 $ python3 gradio_demo.py --hf_model HY-MT1.5-1.8B --axmodel_path HY-MT1.5-1.8B_GPTQ_INT4_ACC_axmodel
 ```
 
-纯文本对话
+英文翻译为中文
 
 ![demo_1](assets/gradio_demo_1.png)
 
-图像理解
+中文翻译为日文
 
 ![demo_2](assets/gradio_demo_2.png)
 
 ---
 
-在 `Axera 开发板` 上运行以下命令开始聊天对话:
+在 `Axera 开发板` 上运行以下命令开始语言翻译任务:
 
 ```sh
 $ cd HY-MT1.5-1.8B.axera/python
