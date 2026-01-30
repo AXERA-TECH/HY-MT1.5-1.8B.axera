@@ -53,16 +53,12 @@ $ tree -L 1
 5 directories, 5 files
 ```
 
-## 模型转换
-
-关于 `onnx` 和 `axmodel` 的导出、编译参见 [模型转换](./model_convert/README.md) 部分内容.
-
 ## 上板部署
 
 - `AX650N` 的设备已预装 `Ubuntu 22.04`
 - 以 `root` 权限登陆 `AX650N` 的板卡设备
 - 接入互联网, 确保 `AX650N` 的设备能正常执行 `apt install`, `pip install` 等指令
-- 已验证设备: `AX650N DEMO Board`、`爱芯派Pro(AX650N)`
+- 已验证设备: `AX650N DEMO Board`、`爱芯派Pro(AX650N)`、`AX620E DEMO Board`
 
 ### Python API 运行
 
@@ -76,7 +72,7 @@ $ pip3 install -r requirements.txt --prefix=/opt/site-packages
 
 #### 添加环境变量
 
-将以下两行添加到 `/root/.bashrc`(实际添加的路径需要自行检查)后, 重新连接终端或者执行 `source ~/.bashrc`
+如果遇到了无法找到 `python` 环境的问题, 那么可以尝试将以下两行命令添加到 `/root/.bashrc`(**实际添加的路径需要自行检查**)后, 重新连接终端或者执行 `source ~/.bashrc`.
 
 ```bash
 $ export PYTHONPATH=$PYTHONPATH:/opt/site-packages/local/lib/python3.10/dist-packages  
@@ -88,7 +84,8 @@ $ export PATH=$PATH:/opt/site-packages/local/bin
 使用 `Gradio API` 交互式对话:
 
 ```bash
-$ python3 gradio_demo.py --hf_model HY-MT1.5-1.8B/ --axmodel_path HY-MT1.5-1.8B_axmodel/ --vit_model vit-models/internvl_vit_model_1x3x448x448.axmodel
+# 注意路径
+$ python3 gradio_demo.py --hf_model HY-MT1.5-1.8B --axmodel_path HY-MT1.5-1.8B_GPTQ_INT4_ACC_axmodel
 ```
 
 纯文本对话
@@ -105,7 +102,7 @@ $ python3 gradio_demo.py --hf_model HY-MT1.5-1.8B/ --axmodel_path HY-MT1.5-1.8B_
 
 ```sh
 $ cd HY-MT1.5-1.8B.axera/python
-$ python3 infer_axmodel.py --hf_model HY-MT1.5-1.8B/ --axmodel_path HY-MT1.5-1.8B_axmodel/ -q "It’s on the house."
+$ python3 infer_axmodel.py --hf_model HY-MT1.5-1.8B/ --axmodel_path HY-MT1.5-1.8B_GPTQ_INT4_ACC_axmodel/ -q "It’s on the house."
 ```
 
 输出结果如下:

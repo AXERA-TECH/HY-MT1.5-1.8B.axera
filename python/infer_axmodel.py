@@ -19,7 +19,7 @@ from torchvision.transforms.functional import InterpolationMode
 if __name__ == "__main__":
 
     """
-    python3 infer_axmodel.py  --vit_model vit-models/internvl_vit_model_1x3x448x448.axmodel --images examples/image_0.jpg
+    python3 infer_axmodel.py --hf_model HY-MT1.5-1.8B/ --axmodel_path HY-MT1.5-1.8B_axmodel/ -q "It’s on the house."
     """
     prompt = None
     parser = argparse.ArgumentParser(description="Model configuration parameters")
