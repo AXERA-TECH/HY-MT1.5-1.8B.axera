@@ -1,0 +1,13 @@
+# axengine==0.1.3
+fastapi==0.116.1
+gradio==5.42.0
+loguru
+# ml_dtypes==0.5.1
+numpy==1.24.0
+onnx==1.16.0
+onnxruntime==1.22.1
+openai==2.9.0
+torch==2.5.1
+torchvision==0.20.1
+transformers==4.57.1
+tqdm
