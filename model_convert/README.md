@@ -41,7 +41,7 @@ CUDA_VISIBLE_DEVICES=0 python3 convert_to_gptq.py \
 
 ```bash
 # 编译上下文 2k, 最大 prefill 为 1k 的模型
-pulsar2 llm_build --input_path ../python/HY-MT1.5-1.8B_GPTQ_INT4  --output_path ../python/HY-MT1.5-1.8B_GPTQ_INT4_axmodel  --hidden_state_type bf16 --prefill_len 128 --kv_cache_len 2047 --last_kv_cache_len 128 --last_kv_cache_len 256 --last_kv_cache_len 384 --last_kv_cache_len 512 --last_kv_cache_len 640 --last_kv_cache_len 768 --last_kv_cache_len 896 --last_kv_cache_len 1024  --chip AX650 -c 1 --parallel 8
+pulsar2 llm_build --input_path ../python/HY-MT1.5-1.8B_GPTQ_INT4  --output_path ../python/HY-MT1.5-1.8B_GPTQ_INT4_axmodel  --hidden_state_type bf16 --prefill_len 128 --kv_cache_len 2047 --last_kv_cache_len 128 --last_kv_cache_len 256 --last_kv_cache_len 384 --last_kv_cache_len 512 --last_kv_cache_len 640 --last_kv_cache_len 768 --last_kv_cache_len 896 --last_kv_cache_len 1024  --chip AX650 -c 0 --parallel 8
 ```
 
 使用上述命令编译大语言模型, 注意**自行修改**模型输入输出路径.
@@ -53,8 +53,10 @@ pulsar2 llm_build --input_path ../python/HY-MT1.5-1.8B_GPTQ_INT4  --output_path 
 当编译目标平台为 `AX620E` 时, 使用下面的命令编译上下文总长度为 `1k` 的模型, 其中 `512` 为 `prefill`, `512` 为输出.
 
 ```sh
-pulsar2 llm_build --input_path HY-MT1.5-1.8B_GPTQ_INT4   --output_path HY-MT1.5-1.8B_GPTQ_INT4_axmodel_ax620e  --hidden_state_type bf16 -w s4 --prefill_len 128 --kv_cache_len 2047 --last_kv_cache_len 128 --last_kv_cache_len 256 --last_kv_cache_len 384 --last_kv_cache_len 512 --last_kv_cache_len 640 --last_kv_cache_len 768 --last_kv_cache_len 896 --last_kv_cache_len 1024  --chip AX620E -c 1 --parallel 32
+pulsar2 llm_build --input_path HY-MT1.5-1.8B_GPTQ_INT4   --output_path HY-MT1.5-1.8B_GPTQ_INT4_axmodel_ax620e  --hidden_state_type bf16 -w s4 --prefill_len 128 --kv_cache_len 2047 --last_kv_cache_len 128 --last_kv_cache_len 256 --last_kv_cache_len 384 --last_kv_cache_len 512 --last_kv_cache_len 640 --last_kv_cache_len 768 --last_kv_cache_len 896 --last_kv_cache_len 1024  --chip AX620E -c 0 --parallel 32
 ```
+
+## 其他
 
 如果你在编译中遇到了下面的错误, 不用担心, 这并不是来自模型编译中的错误, 当日志中出现 `build llm model done!` 则意味着模型已经编译完毕, 后面的错误来自于模型对分需要特定的环境, 而这个环境通常不会包含在工具链的镜像中, 因此可以忽略这个错误.
 
